@@ -288,7 +288,7 @@ Esses passos conectam seu projeto local ao Git e sincronizam-no com o GitHub, cr
 
 ------------------------------------------------------------------------
 
-# 3. Clonando e Bifurcando um Repositório (Fork)
+# 3. Clonando e Bifurcando um Repositório (Fork) {#clonando-e-bifurcando-um-repositório-fork}
 
 Ao colaborar em projetos no GitHub, você pode precisar clonar ou bifurcar (fazer um fork) um repositório. Bifurcar cria uma cópia do repositório em sua própria conta GitHub, permitindo trabalhar em uma versão independente, mas ainda conectada ao repositório original para facilitar contribuições futuras.
 
@@ -417,7 +417,7 @@ Enquanto mantenedor do repositório, você não precisa fazer configuração ini
     git log --oneline          # Visualiza o histórico de commits para confirmar as mudanças
     ```
 
-    b) Já o comando **mais usado** é o `git pull origin main`, o qual busca as atualizações e já as mescla com a sua branch local. Aqui, `main` é o nome da branch principal. Caso você utilize outro branch principal (como `master`), substitua `main` por `master`.
+    b)  Já o comando **mais usado** é o `git pull origin main`, o qual busca as atualizações e já as mescla com a sua branch local. Aqui, `main` é o nome da branch principal. Caso você utilize outro branch principal (como `master`), substitua `main` por `master`.
 
     ```{bash, echo = TRUE, eval = FALSE}
     git pull origin main 
@@ -521,19 +521,19 @@ Enquanto mantenedor do repositório, você não precisa fazer configuração ini
     git push origin nome-branch
     ```
 
-### 4.1.6. Criando e Gerenciando o Pull Request (PR)
+### 4.1.6. Criando e Gerenciando o Pull Request (PR) {#criando-e-gerenciando-o-pull-request-pr}
 
 Após enviar suas alterações para seu repositório, você precisa criar um Pull Request (PR) para que suas mudanças sejam incorporadas ao repositório original.
 
 1.  Acesse a página do seu fork no GitHub e crie um `Pull Request`:
 
-    -   Clique em "New Pull Request".
+    -   Clique no botão `Compare & Create Pull request` e depois em `Crea pull request`.
 
     -   Inclua um título claro, uma descrição detalhada das alterações, referência a issues relacionadas (se houver), e evidências de testes, prints ou GIFs (se aplicável).
 
 2.  Após criar o PR:
 
-    -   Responda a comentários de outros revisores do projeto, se houver.
+    -   Responda a comentários de outros mantenedores do projeto, se houver.
 
     -   Se precisar fazer ajustes, faça as alterações (sem precisar criar nova branch) e os novos commits serão automaticamente incluídos no PR:
 
@@ -548,6 +548,10 @@ Após enviar suas alterações para seu repositório, você precisa criar um Pul
     -   Esteja disponível para discutir as alterações.
 
     -   O(s) mantenedor(es) pode(m) solicitar modificações antes do merge.
+
+4.  O mantenedor ou proprietário do projeto aprova as alterações e faz o **`Merge`**
+
+    -   Clique em `Merge pull request` e depois em `Confirm merge`
 
 ### 4.1.7 Após o Merge do PR
 
@@ -587,7 +591,7 @@ Caso você não seja o mantenedor do repositório, será necessário criar um `P
 
 ### 4.2.1 Configuração inicial do upstream
 
-Se você ainda não fez a configuração inicial do upstream do respositório clonado em seu computador (reveja subtópico [3. Clonando e Bifurcando um Repositório (Fork)]), será necessário fazê-lo para conectar seu repositório local ao repositório original (upstream), conforme abaixo :
+Se você ainda não fez a configuração inicial do upstream do respositório clonado em seu computador (reveja subtópico [3. Clonando e Bifurcando um Repositório (Fork)](#clonando-e-bifurcando-um-repositório-fork)), será necessário fazê-lo para conectar seu repositório local ao repositório original (upstream), conforme abaixo :
 
 ```{bash, echo = TRUE, eval = FALSE}
 git remote add upstream https://github.com/dono-original/nome-repositorio.git
@@ -732,7 +736,7 @@ Nesta etapa, faça as alterações necessárias no projeto, como modificar arqui
     git push origin nome-branch
     ```
 
-### 4.2.6 Criando e Gerenciando Pull Request (PR)
+### 4.2.6 Criando e Gerenciando Pull Request (PR) {#criando-e-gerenciando-pull-request-pr}
 
 1.  Após ter feito o envio das atualizações, vá até a página do seu fork no GitHub e crie um Pull Request:
 
@@ -898,7 +902,7 @@ Se você fez alterações em arquivos, mas não criou uma branch e nem as comito
 
 ## 5.5 Criando Pull Request e Procedimentos Seguintes
 
-Após enviar suas alterações para seu fork, passe para a parte de criar um Pull Request no GitHub e siga os procedimentos conforme descrito anteriormente para proprietários ([4.1.6. Criando e Gerenciando o Pull Request (PR)]) ou colaboradores ([4.2.6 Criando e Gerenciando Pull Request (PR)]) do repositório.
+Após enviar suas alterações para seu fork, passe para a parte de criar um Pull Request no GitHub e siga os procedimentos conforme descrito anteriormente para proprietários ([4.1.6. Criando e Gerenciando o Pull Request (PR)](#criando-e-gerenciando-o-pull-request-pr)) ou colaboradores ([4.2.6 Criando e Gerenciando Pull Request (PR)](#criando-e-gerenciando-pull-request-pr)) do repositório.
 
 ------------------------------------------------------------------------
 
@@ -920,11 +924,11 @@ Esse comando exibirá uma lista com o histórico de commits e seus identificador
 
 Para apagar a última modificação que foi mesclada (merged) em um projeto usando Git, você tem algumas opções. Aqui está a forma mais segura de fazer isso:
 
-1.   Para reverter o último commit mesclado mantendo o histórico:
+1.  Para reverter o último commit mesclado mantendo o histórico:
 
-    ```{bash, echo = TRUE, eval = FALSE}
-    git revert HEAD
-    ```
+```{{bash, echo = TRUE, eval = FALSE}}
+git revert HEAD
+```
 
 2.  Se você quer remover completamente o último commit (não recomendado se já foi compartilhado):
 
@@ -934,13 +938,13 @@ Para apagar a última modificação que foi mesclada (merged) em um projeto usan
 
 **Importante:**
 
--    `revert` é mais seguro pois cria um novo commit que desfaz as alterações
+-   `revert` é mais seguro pois cria um novo commit que desfaz as alterações
 
--    `reset --hard` é mais arriscado pois apaga o histórico
+-   `reset --hard` é mais arriscado pois apaga o histórico
 
--    Se o commit já foi enviado para o repositório remoto (pushed), use `revert`
+-   Se o commit já foi enviado para o repositório remoto (pushed), use `revert`
 
--    Se for local e ainda não compartilhado, pode usar `reset`
+-   Se for local e ainda não compartilhado, pode usar `reset`
 
 ## 6.3 Resetar para um Commit Anterior
 
