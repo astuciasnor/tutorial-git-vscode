@@ -1196,7 +1196,11 @@ fazer isso:
 
 1.  Para reverter o último commit mesclado mantendo o histórico:
 
-`{{bash, echo = TRUE, eval = FALSE}} git revert HEAD`
+    ``` bash
+    git revert HEAD
+    ```
+
+<!-- -->
 
 2.  Se você quer remover completamente o último commit (não recomendado
     se já foi compartilhado):
