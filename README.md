@@ -705,7 +705,8 @@ repositório original.
 
 1.  Acesse a página do seu fork no GitHub e crie um `Pull Request`:
 
-    - Clique em “New Pull Request”.
+    - Clique no botão `Compare & Create Pull request` e depois em
+      `Crea pull request`.
 
     - Inclua um título claro, uma descrição detalhada das alterações,
       referência a issues relacionadas (se houver), e evidências de
@@ -713,7 +714,8 @@ repositório original.
 
 2.  Após criar o PR:
 
-    - Responda a comentários de outros revisores do projeto, se houver.
+    - Responda a comentários de outros mantenedores do projeto, se
+      houver.
 
     - Se precisar fazer ajustes, faça as alterações (sem precisar criar
       nova branch) e os novos commits serão automaticamente incluídos no
@@ -730,6 +732,11 @@ repositório original.
     - Esteja disponível para discutir as alterações.
 
     - O(s) mantenedor(es) pode(m) solicitar modificações antes do merge.
+
+4.  O mantenedor ou proprietário do projeto aprova as alterações e faz o
+    **`Merge`**
+
+    - Clique em `Merge pull request` e depois em `Confirm merge`
 
 ### 4.1.7 Após o Merge do PR
 
@@ -1189,11 +1196,7 @@ fazer isso:
 
 1.  Para reverter o último commit mesclado mantendo o histórico:
 
-<!-- -->
-
-    ``` bash
-    git revert HEAD
-    ```
+`{{bash, echo = TRUE, eval = FALSE}} git revert HEAD`
 
 2.  Se você quer remover completamente o último commit (não recomendado
     se já foi compartilhado):
