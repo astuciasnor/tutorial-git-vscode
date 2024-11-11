@@ -13,22 +13,6 @@ do VS Code e na página do GitHub para controle de versão de códigos de
 projetos de programação. Utilizaremos principalmente o terminal do Git
 Bash no VS Code ou abrindo o Git Bash em uma pasta de projeto.
 
-# 1. Instruções Iniciais para Uso do Git/GitHub
-
-1.  **Criar uma conta no GitHub**: Crie uma conta gratuita no GitHub em
-    <https://github.com/>.
-
-2.  **Instalar o Git**: Baixe e instale o Git a partir do link:
-    <https://git-scm.com/downloads>.
-
-3.  **Verificar a Instalação**: Ao fim da instalação do Git, abra e
-    feche o Git Bash. Depois, teste se o Git foi instalado corretamente
-    abrindo um terminal e digitando:
-
-    ``` bash
-    git --version
-    ```
-
 # 1. Instruções Inicias para uso do Git/Github
 
 1.  Crie uma conta gratuita no GitHub em: <https://github.com/>
@@ -746,31 +730,19 @@ original.
 
 <!-- -->
 
-2.  Atualize sua `main` local com as mudanças do `upstream`
+2.  Atualize sua `main` local com as mudanças do `origin`
 
     ``` bash
-    git pull upstream main
+    git pull origin main
     ```
 
-<!-- -->
-
-3.  Atualize a `main` do seu fork
-
-    ``` bash
-    git push origin main
-    ```
-
-<!-- -->
-
-4.  Remova a branch de feature localmente
+3.  Remova a branch de feature localmente
 
     ``` bash
     git branch -d nome-branch
     ```
 
-<!-- -->
-
-5.  Remova a branch de feature do seu fork remoto
+4.  Remova a branch de feature do seu repositório remoto
 
     ``` bash
     git push origin --delete nome-branch
