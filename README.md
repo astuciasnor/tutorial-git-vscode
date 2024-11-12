@@ -33,11 +33,18 @@ projeto.
     Se tudo estiver funcionando, deve aparecer a versão do Git instalada
     no seu sistema operacional.
 
-## 1.1 Configurando o Git/GitHub no VS Code
+## 1.1 Configuração Básica do Git/Github
 
-Abra o VS-Code e siga as etapas para integrar o Git ao VS Code.
-Certifique-se de que o VS Code consiga localizar o Git, que pode ser
-configurado nas “Configurações” do VS Code, na seção `Git: Path`.
+1.  Abra o terminal no VS Code e configure o nome e e-mail do Github
+    para suas commits:
+
+    ``` bash
+    git config --global user.name "Seu Nome"
+    ```
+
+    ``` bash
+    git config --global user.email "seuemail@example.com"
+    ```
 
 ## 1.2 Configurando a Comunicação com o GitHub via Chave SSH
 
@@ -51,12 +58,6 @@ GitHub, você deve gerar e adicionar uma chave SSH:
 
     ``` bash
     ssh-keygen -t ed25519 -C "seu-email@example.com"
-    ```
-
-    Caso seu sistema não suporte `ed25519`, use o algoritmo `rsa`:
-
-    ``` bash
-    ssh-keygen -t rsa -b 4096 -C "seu-email@example.com"
     ```
 
     Pressione `Enter` para aceitar o local padrão do arquivo e, se
@@ -82,6 +83,39 @@ GitHub, você deve gerar e adicionar uma chave SSH:
 
 Agora, você estará pronto para se conectar de forma segura ao GitHub
 usando sua chave SSH.
+
+4.  Caso seu sistema não suporte ed25519, use o **algoritmo rsa**:
+
+    ``` bash
+    ssh-keygen -t rsa -b 4096 -C "seu-email@example.com"
+    cat ~/.ssh/id_rsa.pub
+    ```
+
+    O conteúdo da chave pública começará com `ssh-rsa` e será uma linha
+    longa de texto. Copie todo o conteúdo.
+
+    **Adicione a chave pública ao GitHub**:
+
+    - Acesse seu perfil no GitHub e vá para **Settings**
+      (Configurações).
+
+    - No menu lateral, vá para **SSH and GPG keys**.
+
+    - Clique em **New SSH key**.
+
+    - No campo **Title**, dê um nome para a chave (como “Meu Notebook”
+      ou “PC Trabalho”).
+
+    - Cole a chave pública copiada no campo **Key**.
+
+    - Clique em **Add SSH key**.
+
+5.  **Teste a conexão**: Agora, teste a conexão SSH com o GitHub para
+    garantir que tudo está configurado corretamente:
+
+    ``` bash
+    ssh -T git@github.com
+    ```
 
 # 2. Como criar repositório
 
