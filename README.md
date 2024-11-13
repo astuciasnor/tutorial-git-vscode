@@ -306,27 +306,44 @@ posteriormente, sincroniza o projeto com o GitHub.
 
 1.  **Crie uma pasta para o projeto**: No local desejado em seu
     computador, crie uma pasta para o projeto ou navegue até a pasta já
-    existente.
+    existente. Você pode também criar a pasta do projeto no computador e
+    abrir o VS-Code nesta pasta.
 
     ``` bash
     mkdir nome_do_projeto
     cd nome_do_projeto
     ```
 
-2.  **Inicie o repositório Git local**: Dentro da pasta do projeto,
-    inicialize um novo repositório Git.
+2.  **Inicie o repositório Git local**: Dentro da pasta do projeto, crie
+    alguns arquivos com o VS-Code e depois inicialize um novo
+    repositório Git.
 
     ``` bash
     git init
     ```
 
 3.  **Adicione arquivos e faça um commit inicial**: Adicione os arquivos
-    do projeto ao Git e crie o primeiro commit.
+    do projeto ao Git e crie o primeiro commit. O comando `commit` cria
+    uma nova versão do projeto.
 
     ``` bash
     git add .
+    ```
+
+    ``` bash
     git commit -m "Commit inicial"
     ```
+
+    ``` bash
+    git log  # Para verificar histórico dos commits feitos
+    ```
+
+    ``` bash
+    git log --all 
+    ```
+
+    O comando `git log --all` mostra todos os commits que temos, quando
+    fazemos o comando `git checkout hash-do-commit`.
 
 4.  **Crie um repositório vazio no GitHub**: Acesse o GitHub, vá para a
     página de criação de repositórios e crie um novo repositório vazio
@@ -340,6 +357,10 @@ posteriormente, sincroniza o projeto com o GitHub.
 
     ``` bash
     git remote add origin https://github.com/seu-usuario/nome_do_repositorio.git
+    ```
+
+    ``` bash
+    git branch -M main  # Renomeia master para main
     ```
 
 6.  **Envie o commit inicial para o GitHub**: Envie o conteúdo do
@@ -428,11 +449,11 @@ versões e o GitHub para fazer backup e colaborar no projeto.
 
 # 3. Clonando e Bifurcando um Repositório (Fork)
 
-Ao colaborar em projetos no GitHub, você pode precisar clonar ou
-bifurcar (fazer um fork) um repositório. Bifurcar cria uma cópia do
-repositório em sua própria conta GitHub, permitindo trabalhar em uma
-versão independente, mas ainda conectada ao repositório original para
-facilitar contribuições futuras.
+Ao colaborar em projetos no GitHub e em equipe, você pode precisar
+clonar ou bifurcar (fazer um fork) um repositório. Bifurcar cria uma
+cópia do repositório em sua própria conta GitHub, permitindo trabalhar
+em uma versão independente, mas ainda conectada ao repositório original
+para facilitar contribuições futuras.
 
 ## 3.1 Bifurcando o Repositório do GitHub e Clonando no seu computador
 
@@ -442,10 +463,10 @@ facilitar contribuições futuras.
 
 2.  **Clone o Repositório Forkado**: Após ter feito o fork, você pode
     clicar na seta ao lado do botão `Code` para poder copiar o link
-    HTTPS ou SSH para o clone.
+    HTTPS ou SSH para poder clonar o repositório.
 
-3.  **Abra o VS Code e Clone o Repositório**: No VS Code, abra o
-    terminal e clone o repositório usando o link copiado:
+3.  **Abra o VS Code e Clone o Repositório**: No VS Code (ou no git
+    bash), abra o terminal e clone o repositório usando o link copiado:
 
     ``` bash
     git clone <URL_do_repositorio_forkado>
@@ -458,6 +479,19 @@ facilitar contribuições futuras.
 
     ``` bash
     cd nome_do_repositorio
+    ```
+
+    **Através do Git Bash:**
+
+5.  Você pode também o processo acima dentro de uma pasta de
+    repositórios, abrir o git bash, clonar o repo, ir para basta e
+    depois abrir o VS-Code a partir dessa pasta. Use a sequência de
+    colandos abaixo:
+
+    ``` bash
+    git clone <URL_do_repositorio_forkado>
+    cd nome_do_repositorio
+    code .
     ```
 
 ## 3.2 Configurando o Repositório Original como Remoto
@@ -521,7 +555,23 @@ Quando desejar incorporar atualizações do repositório original
 > Isso sincroniza seu fork com as mudanças mais recentes do repositório
 > original, mantendo seu projeto atualizado para futuras contribuições.
 
-## 3.4. Explicação de termos do mundo Git
+## 3.4. Criando branch e faça commit para as suas mudanças
+
+Sempre que for colaborar, crie uma branch nova para trabalhar de forma
+eficiente. Depois faça seus commits e pushes. Na seção 4.2, há uma
+descrição mais detalhada desse passo de colboração. A título de exemplo,
+seguem os comandos para se colaborar:
+
+``` bash
+git checkout -b nome-branch # Crie a branch e começa fazer alterações
+git status
+git add .
+git status
+git commit -m "Descreva as alaterações"
+git push origin nome-branch
+```
+
+## 3.5. Explicação de termos do mundo Git
 
 - **origin**:
   - É o nome padrão dado ao repositório remoto quando você clona ou
