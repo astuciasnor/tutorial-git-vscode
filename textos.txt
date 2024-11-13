@@ -2,3 +2,4 @@ Simulando minha primeira linha de código, hoje, 11/11/2024
 Minha segunda linha de código feita no mesmo dia
 Primeira linha para testar a mesma branch duas vezes
 Segunda linha para testar a mesma branch e ir na branch2 no github e buscar por contribute
+Quinta linha para testar o vscode com positron em colaboração por branch diferente e arquivo diferente
