@@ -2,3 +2,4 @@ Simulando minha primeira linha de código, hoje, 11/11/2024
 Minha segunda linha de código feita no mesmo dia
 Primeira linha para testar a mesma branch duas vezes
 Segunda linha para testar a mesma branch e ir na branch2 no github e buscar por contribute
+Sexta para o SSH em 13.11.24 as 17h42
