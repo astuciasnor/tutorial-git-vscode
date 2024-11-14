@@ -5,3 +5,4 @@ Segunda linha para testar a mesma branch e ir na branch2 no github e buscar por 
 Quinta linha para testar o vscode com positron em colaboração por branch diferente e arquivo diferente
 Sexta para o SSH em 13.11.24 as 17h42
 Sétima linha 
+Oitava linha
