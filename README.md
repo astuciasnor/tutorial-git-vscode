@@ -51,7 +51,7 @@ projeto.
 Para configurar a comunicação segura entre seu repositório local e o
 GitHub, você deve gerar e adicionar uma chave SSH:
 
-1.  **Gerar uma Chave SSH**:
+1.  **Gerar uma Chave SSH** (caso ainda não tenha uma):
 
     Abra o Git Bash e digite o seguinte comando para gerar uma chave
     SSH:
@@ -60,62 +60,73 @@ GitHub, você deve gerar e adicionar uma chave SSH:
     ssh-keygen -t ed25519 -C "seu-email@example.com"
     ```
 
-    Pressione `Enter` para aceitar o local padrão do arquivo e, se
-    desejar, defina uma senha para proteger sua chave.
+    - Pressione `Enter` para salvar a chave no local padrão
+      (`~/.ssh/id_ed25519`).
+
+    - Defina uma senha para proteger a chave, se desejar.
 
 2.  **Adicionar a Chave SSH ao SSH Agent**:
 
-    Inicie o SSH Agent e adicione sua chave SSH:
+    Primeiro, inicie o agente SSH:
 
     ``` bash
     eval "$(ssh-agent -s)"
+    ```
+
+    Depois, adicione a chave:
+
+    ``` bash
     ssh-add ~/.ssh/id_ed25519
     ```
 
 3.  **Adicionar a Chave SSH ao GitHub**:
 
-    ``` bash
-    cat ~/.ssh/id_ed25519.pub | clip
-    ```
-
-    Em seguida, acesse <https://github.com/settings/keys>, clique em
-    “New SSH key”, cole a chave pública e salve.
-
-Agora, você estará pronto para se conectar de forma segura ao GitHub
-usando sua chave SSH.
-
-4.  Caso seu sistema não suporte ed25519, use o **algoritmo rsa**:
+    Para copiar a chave pública (que deve ser adicionada ao GitHub):
 
     ``` bash
-    ssh-keygen -t rsa -b 4096 -C "seu-email@example.com"
-    cat ~/.ssh/id_rsa.pub
+    cat ~/.ssh/id_ed25519.pub | clip  # Sua chave é copiada para o clipboard
     ```
 
-    O conteúdo da chave pública começará com `ssh-rsa` e será uma linha
-    longa de texto. Copie todo o conteúdo.
+4.  **Adicionar a chave SSH ao GitHub**:
 
-    **Adicione a chave pública ao GitHub**:
-
-    - Acesse seu perfil no GitHub e vá para **Settings**
-      (Configurações).
-
-    - No menu lateral, vá para **SSH and GPG keys**.
+    - Vá até as configurações da sua conta no GitHub ([Configurações SSH
+      no GitHub](https://github.com/settings/keys)).
 
     - Clique em **New SSH key**.
 
-    - No campo **Title**, dê um nome para a chave (como “Meu Notebook”
-      ou “PC Trabalho”).
+    - Cole a chave copiada no campo e dê um nome para identificá-la,
+      como “Meu notebook” ou “Desktop pessoal”.
 
-    - Cole a chave pública copiada no campo **Key**.
+    - Salve a chave.
 
-    - Clique em **Add SSH key**.
-
-5.  **Teste a conexão**: Agora, teste a conexão SSH com o GitHub para
-    garantir que tudo está configurado corretamente:
+5.  **Testar a conexão com o GitHub**:
 
     ``` bash
     ssh -T git@github.com
     ```
+
+    Se configurado corretamente, você verá uma mensagem de boas-vindas
+    do GitHub
+
+6.  Caso seu sistema não suporte ed25519, use o **algoritmo rsa**:
+
+    ``` bash
+    eval "$(ssh-agent -s)"
+    ```
+
+    ``` bash
+    ssh-keygen -t rsa -b 4096 -C "seu-email@example.com"
+    ```
+
+    ``` bash
+    cat ~/.ssh/id_rsa.pub
+    ```
+
+    - O conteúdo da chave pública começará com `ssh-rsa` e será uma
+      linha longa de texto. Copie todo o conteúdo.
+
+    - Repita as **etapas 4 e 5** acima para finalizar a configuração por
+      esse outro algoritmo.
 
 # 2. Como criar repositório
 
