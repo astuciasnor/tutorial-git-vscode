@@ -6,3 +6,4 @@ Quinta linha para testar o vscode com positron em colaboração por branch difer
 Sexta para o SSH em 13.11.24 as 17h42
 Sétima linha 
 Oitava linha
+Nona linha de tese via Positron em 15.11.24 às20h52
