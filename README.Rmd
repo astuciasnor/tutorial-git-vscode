@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: end -->
 
-Este tutorial de uso do Git/GitHub no Visual Studio Code (VS-Code) tem como objetivo fornecer orientações práticas para usuários iniciantes e intermediários sobre como usar o Git e o GitHub diretamente na interface do VS Code e na página do GitHub a fim de realizar controle de versão de códigos de projetos de programação. Utilizaremos principalmente o terminal do Git Bash no VS-Code ou abrindo o Git Bash em uma pasta de projeto.
+Este tutorial de uso do Git/GitHub no Visual Studio Code (VS-Code) tem como objetivo fornecer orientações práticas para usuários iniciantes e intermediários sobre como usar o Git e o GitHub diretamente na interface do VS Code e na página do GitHub a fim de realizar controle de versão de códigos de projetos de programação. Utilizaremos principalmente o terminal do Git Bash no VS-Code.
 
 # 1. Instruções Inicias para uso do Git/Github
 
@@ -27,7 +27,7 @@ Este tutorial de uso do Git/GitHub no Visual Studio Code (VS-Code) tem como obje
 
 2.  Baixe e instale o Git a partir do link: <https://git-scm.com/downloads>
 
-3.  Ao fim da instalçaão do Git, abra e feche o Git Bash.
+3.  Ao fim da instalação do Git, abra e feche o Git Bash.
 
 4.  Faça o teste para verificar se o Git foi instalado corretamente. Digite em um terminal:
 
@@ -131,9 +131,9 @@ Vamos criar nosso primeiro repositório para uso pessoal e, também, verificar s
 
 A maneira mais eficiente de criar um novo repositório é diretamente pelo site do GitHub, pois isso garante que todas as configurações sejam corretamente definidas desde o início.
 
-1.  Acesse sua conta no GitHub e clique no botão **"New Repository"** no canto superior direito da página para criar um novo repositório.
+1.  Acesse sua conta no GitHub, acesse a guia Repositories e clique no botão verde **`New`** no canto superior direito da página para criar um novo repositório.
 
-    ![](images/new_repo.png)
+    ![](images/clipboard-2992832090.png){width="605"}
 
 2.  Defina o nome do repositório, adicione uma descrição (opcional), e escolha se deseja que o repositório seja público ou privado.
 
@@ -141,32 +141,34 @@ A maneira mais eficiente de criar um novo repositório é diretamente pelo site 
 
 4.  Preencha as informações conforme figura abaixo e clique no botão **`Create repository`** para finalizar a criação.
 
-### ![](images/criando-repo-github.png)
+    ![](images/criando-repo-github.png){width="631"}
 
 ### 2.1.1 Clonando o Repositório no Seu Computador
 
 Depois de criar o repositório no GitHub, o próximo passo é clonar o repositório para sua máquina local, criando uma cópia que você poderá modificar posteriormente no VS-Code. Além disso, esta etapa verifica se a comunicação via Git está funcionando.
 
-No GitHub, acesse a página do repositório recém-criado e clique no botão verde **`<>Code`**, conforme figura abaixo. Em seguida, copie a URL fornecida para clonar o repositório (por exemplo, algo como [`https://github.com/seu-usuario/seu-repositorio.git`](https://github.com/seu-usuario/seu-repositorio.git)).
+1.  No GitHub, acesse a página do repositório recém-criado e clique no botão verde **`<>Code`**, conforme figura abaixo. Em seguida, copie a URL fornecida para clonar o repositório (por exemplo, algo como [`https://github.com/seu-usuario/seu-repositorio.git`](https://github.com/seu-usuario/seu-repositorio.git)).
 
-![](images/url_repos.png){width="262"}
+    ![](images/url_repos.png){width="375"}
 
-No Git Bash, navegue até o diretório onde deseja clonar seus repositórios e digite o seguinte comando:
+2.  No Git Bash, navegue até o diretório onde deseja clonar seus repositórios e digite o seguinte comando:
 
-```{bash, echo = TRUE, eval = FALSE}
-git clone https://github.com/seu-usuario/seu-repositorio.git
-```
+    ```{bash, echo = TRUE, eval = FALSE}
+    git clone https://github.com/seu-usuario/seu-repositorio.git
+    ```
 
-> Ao executar este comando, será criada uma cópia local do repositório em seu computador, permitindo que você faça edições e atualizações quando necessário. Durante o processo de clonagem, o Git automaticamente configura uma conexão remota chamada `origin`, que aponta para a URL do repositório original em sua conta. Desde que você seja o proprietário do repositório, esta configuração automática elimina a necessidade de executar manualmente o comando `git remote add` para conectá-lo remotamente ao respositório original no Github.
+> Ao executar este comando, será criada uma cópia local do repositório em seu computador, permitindo que você faça edições e atualizações quando necessário. Durante o processo de clonagem, o Git automaticamente configura uma conexão remota chamada `origin`, que aponta para a URL do repositório original em sua conta. Desde que você seja o proprietário do repositório, esta configuração automática elimina a necessidade de executar manualmente o comando `git remote add` para conectá-lo remotamente ao respositório original no Github. Veja na seção 3 como clonar repositórios de terceiros.
+
+3.  Abra o VS-Code a partir do seu terminal (Pode ser o Git Bash), estando dentro da pasta do projeto clonado:
+
+    ```{bash, echo = TRUE, eval = FALSE}
+    cd seu-repositorio/
+    code .
+    ```
 
 ### 2.1.2 Implementando alterações em seu projeto
 
-Agora que o repositório foi colando no seu computador, você pode realizar pequenas alterações para testar o controle de versão com Git e GitHub. Estes procedimentos são aplicáveis quando apenas você interage com o seu próprio repositório. Mas primeiro, abre-o via comandos no Git bash:
-
-```{bash, echo = TRUE, eval = FALSE}
-cd seu-repositorio/
-code .
-```
+Agora que o repositório foi colando no seu computador, você pode realizar pequenas alterações para testar o controle de versão com Git e GitHub. Estes procedimentos são aplicáveis quando apenas você interage com o seu próprio repositório.
 
 #### Crie pastas e arquivos:
 
@@ -216,7 +218,7 @@ No VS Code, crie uma nova pasta e adicione um novo arquivo dentro dessa pasta (p
 
 6.  **Confirme a atualização local**: Após o comando `git pull`, verifique se as alterações no `README.md` foram aplicadas corretamente no VS Code. Abra o arquivo `README.md` no VS Code e confira se a nova linha adicionada aparece.
 
-### 2.1.4 Configurando o `.gitignore` para Excluir Pastas e Arquivos
+### 2.1.4 **Excluindo Pastas e Arquivos do Versionamento usando o `.gitignore`**
 
 Nem todos os arquivos e pastas precisam ser compartilhados no repositório. Para evitar que certos arquivos sejam versionados, você pode listá-los no arquivo `.gitignore`, garantindo que apenas os arquivos relevantes sejam rastreados pelo Git.
 
@@ -286,9 +288,9 @@ Embora seja mais eficiente criar o repositório diretamente no GitHub e depois c
 
     O comando `git log --all` é usado para mostrar todos os commits que temos, quando fazemos o comando `git checkout hash-do-commit`.
 
-4.  **Crie um repositório vazio no GitHub**: Acesse o GitHub, vá para a página de criação de repositórios e crie um novo repositório vazio com o mesmo nome do projeto. **Não adicione nenhum arquivo ao repositório no GitHub** (como README.md ou .gitignore), pois o repositório deve estar vazio para evitar conflitos.
+4.  **Crie um repositório vazio no GitHub**: Acesse o GitHub, vá para a aba de criação de repositórios e crie um novo repositório vazio com o mesmo nome do projeto. **Não adicione nenhum arquivo ao repositório no GitHub** (como README.md ou .gitignore), pois o repositório deve estar vazio para evitar conflitos.
 
-5.  **Vincule o repositório local ao GitHub**: No terminal, adicione o repositório GitHub como um repositório remoto, substituindo `seu-usuario` e `nome_do_repositorio` pelos valores correspondentes.
+5.  **Vincule o repositório local ao GitHub**: No terminal, adicione o repositório GitHub como um repositório remoto, substituindo `seu-usuario` e `nome_do_repositorio` pelos nomes correspondentes.
 
     ```{bash, echo = TRUE, eval = FALSE}
     git remote add origin https://github.com/seu-usuario/nome_repositorio.git
@@ -306,7 +308,7 @@ Embora seja mais eficiente criar o repositório diretamente no GitHub e depois c
 
     O parâmetro `-u` configura a branch `main` local para acompanhar automaticamente a branch `main` do GitHub, facilitando futuros comandos `git push`.
 
-Agora, seu repositório está vinculado ao GitHub e sincronizado. A partir daqui, você pode continuar fazendo commits e enviando as alterações para o repositório remoto.
+    Agora, seu repositório está vinculado ao GitHub e sincronizado. A partir daqui, você pode continuar fazendo commits e enviando as alterações para o repositório remoto.
 
 ## 2.3 Configurando Git e GitHub para um Projeto Existente no Computador
 
@@ -362,16 +364,16 @@ Ao colaborar em projetos no GitHub e em equipe, você pode precisar clonar ou bi
 
 ## 3.1 Bifurcando o Repositório do GitHub e Clonando no seu computador {#fork}
 
-1.  **Faça o Fork do Repositório**: No GitHub, acesse o repositório do mantenedor a partir do qual deseja bifurcar e clique no botão **Fork** no canto superior direito. Isso cria uma cópia do repositório em sua conta GitHub.
+1.  **Faça o Fork do Repositório**: No GitHub, acesse o repositório do mantenedor a partir do qual deseja bifurcar e clique no botão **Fork** no canto superior direito e depois em `+ Create a new fork`. Isso cria uma cópia do repositório em sua conta GitHub.
 
     ![](images/botao-fork.png)
 
 2.  **Clone o Repositório Forkado**: Após ter feito o fork, você pode clicar na seta ao lado do botão **`<>Code`** para poder copiar o link HTTPS ou SSH para poder clonar o repositório.
 
-3.  **Abra o VS Code e Clone o Repositório**: No VS Code (ou no git bash), abra o terminal e clone o repositório usando o link copiado:
+3.  **Abra o VS Code e Clone o Repositório**: No VS Code (ou no git bash), abra o terminal e clone o repositório usando o link copiado a partir de sua conta no Github:
 
     ```{bash, echo = TRUE, eval = FALSE}
-    git clone <URL_do_repositorio_forkado>
+    git clone https://github.com/seu-usuario/nome-repositorio.git>
     ```
 
     Esse comando cria uma cópia local do repositório forkado. Substitua `<URL_do_repositorio_forkado>` pelo link HTTPS ou SSH.
@@ -396,13 +398,11 @@ Ao colaborar em projetos no GitHub e em equipe, você pode precisar clonar ou bi
 
 Para manter seu fork sincronizado com o repositório original, adicione o repositório original como um remoto adicional chamado `upstream`:
 
-1.  **Adicione o repositório original como `upstream`**:
+1.  **Adicione o repositório original como `upstream`**: sicronize o repositório remoto upstream usando o link copiado a partir da conta do proprietário original no Github
 
     ```{bash, echo = TRUE, eval = FALSE}
-    git remote add upstream <URL_do_repositorio_original>
+    git remote add upstream https://github.com/usuario-original/nome-repositorio.git
     ```
-
-    Substitua `<URL_do_repositorio_original>` pelo link do repositório original no GitHub.
 
 2.  Verifique os repositórios local e remoto conectados
 
@@ -417,13 +417,14 @@ Quando desejar incorporar atualizações do repositório original (`upstream`) a
 1.  **Buscar atualizações do repositório original**:
 
     ```{bash, echo = TRUE, eval = FALSE}
-    git fetch upstream
+    git checkout main    # Mude primeiro para a main
+    git fetch upstream   # Busca atualizações 
     ```
 
 2.  **Mesclar as atualizações**:
 
     ```{bash, echo = TRUE, eval = FALSE}
-    git merge upstream/main
+    git merge upstream/main  # Mescala atualizações à branch local atual (main)
     ```
 
     O comando `git merge` deve ser executado na sua branch `main local`. A branch **`main` do `upstream` (ou seja, o repositório original)** é mesclada **na sua branch `main` local**.
@@ -445,7 +446,7 @@ Quando desejar incorporar atualizações do repositório original (`upstream`) a
 Sempre que for colaborar, crie uma branch nova para trabalhar de forma eficiente. Depois faça seus commits e pushes. Na seção 4.2, há uma descrição mais detalhada desse processo de colaboração. A título de exemplo, seguem os comandos para se colaborar:
 
 ```{bash, echo = TRUE, eval = FALSE}
-git checkout -b nome-branch # Crie a branch e começa fazer alterações
+git checkout -b nome-branch # Crie a branch e comece a fazer alterações
 git status
 git add .
 git status
@@ -456,13 +457,13 @@ git push origin nome-branch
 ## 3.5. Explicação de termos do mundo Git
 
 -   **origin**:
-    -   É o nome padrão dado ao repositório remoto quando você clona ou bifurca um projeto.
+    -   É o nome padrão dado ao repositório remoto quando você clona ou bifurca (fork) um projeto.
 
     -   Refere-se ao link do seu próprio repositório no GitHub, ou seja, o fork que está sob a sua conta de usuário.
 
     -   Quando você executa `git push origin main`, está enviando as atualizações para o seu repositório no GitHub (o fork).
 -   **upstream**:
-    -   É o nome que se usa para o repositório remoto original, ou seja, o repositório de onde você fez o fork.
+    -   É o nome que se usa para o repositório remoto original, ou seja, o repositório principal do projeto de onde você fez o fork.
 
     -   Configurar o `upstream` permite que você busque as atualizações mais recentes do repositório original sem afetar as suas próprias modificações no fork.
 
@@ -482,13 +483,13 @@ git push origin nome-branch
 
 ## 4.1. Versionando enquanto Mantenedor
 
-Após ter criado uma cópia de seus repositório no seu computador e sabendo que o mesmo poderá ser em bifurcação (fork) com outros colaboradores, você, como mantenedor, pode querer aprimorar ainda mais seus códigos dentro do projeto de análise. Siga os passos abaixo para inserir suas alterações em arquivos editáveis como `.html`, `.css`, `.htm`, `.py`, `.R`, `.Rmd`, `.qmd`, `.csv`, `.xlsx`, etc, ou para adicionar arquivos não editáveis às pastas do projeto
+Após ter criado uma cópia de seus repositório no seu computador e sabendo que o mesmo poderá ser em bifurcação (fork) com outros colaboradores, você como proprietário (mantenedor) pode querer aprimorar ainda mais seus códigos dentro do projeto de análise. Siga os passos abaixo para inserir suas alterações em arquivos editáveis como `.html`, `.css`, `.htm`, `.py`, `.R`, `.Rmd`, `.qmd`, `.csv`, `.xlsx`, etc, ou para adicionar arquivos não editáveis às pastas do projeto.
 
-> **Nota:** Essas etapas são válidas quando você é o proprietário do repositório (seja em fork ou não). Usaremos apenas o terminal Git-bash do VS-Code para trabalhar de maneira eficiente com o Git. Clique neste [link](https://www.youtube.com/watch?v=dSPVkmzuK60){target="_blank"} para ver instrução de como configurar o Gitbash como terminal padrão no VS-Code.
+> **Nota:** Essas etapas são válidas quando você é o proprietário do repositório original. Usaremos apenas o terminal Git-bash do VS-Code para trabalhar de maneira eficiente com o Git. Clique neste [link](https://www.youtube.com/watch?v=dSPVkmzuK60){target="_blank"} para ver instrução de como configurar o Gitbash como terminal padrão no VS-Code.
 
 ### **4.1.1 Configuração inicial do upstream**
 
-Enquanto mantenedor do repositório, você não precisa fazer configuração inicial de upstream com o comando `git remote add upstream url-repo` . Isso será necessário quando você for um colaborador de um projeto em fork.
+Enquanto mantenedor do repositório, você não precisa fazer configuração inicial de upstream com o comando `git remote add upstream url-repo` . Isso será necessário quando você for um colaborador de um projeto em fork, conforme explicado na `Seção 3`.
 
 ### 4.1.2 Atualizando sua main local
 
@@ -502,13 +503,15 @@ Enquanto mantenedor do repositório, você não precisa fazer configuração ini
 
     a)  ) O comando `git fetch origin` busca as atualizações do repositório remoto, mas não as aplica automaticamente ao seu branch local. É útil se você deseja revisar as mudanças antes de aplicá-las. Depois teria que fazer `git merge origin/main` . Caso você deseje usar esse procedimento de revisar e mesclar, segue abaixo a sequência completa de comandos:
 
-    ```{bash, echo = TRUE, eval = FALSE}
-    git fetch origin           # Busca as atualizações do repositório remoto sem aplicá-las
+        ```{bash, echo = TRUE, eval = FALSE}
+        git fetch origin           # Busca as atualizações do repositório remoto sem aplicá-las
 
-    git diff main origin/main  # Mostra as diferenças entre sua branch local e a versão no remoto
-    git merge origin/main      # Mescla as atualizações do remoto na sua branch local
-    git log --oneline          # Visualiza o histórico de commits para confirmar as mudanças
-    ```
+        git diff main origin/main  # Mostra as diferenças entre sua branch local e a versão no remoto
+        git merge origin/main      # Mescla as atualizações do remoto na sua branch local
+        git log --oneline          # Visualiza o histórico de commits para confirmar as mudanças
+        ```
+
+    <!-- -->
 
     b)  Já o comando **mais usado** é o `git pull origin main`, o qual busca as atualizações e já as mescla com a sua branch local. Aqui, `main` é o nome do branch principal. Caso você utilize outro branch principal (como `master`), substitua `main` por `master`.
 
@@ -520,7 +523,7 @@ Enquanto mantenedor do repositório, você não precisa fazer configuração ini
 
 ### **4.1.3 Criando nova branch antes de fazer mudanças**
 
-1.  Crie e mude para uma nova branch para trabalhar em uma nova funcionalidade (ex.: `feature/login`):
+1.  Crie e mude para uma nova branch para trabalhar em uma nova funcionalidade:
 
     ```{bash, echo = TRUE, eval = FALSE}
     git checkout -b nome-branch
@@ -562,7 +565,7 @@ Enquanto mantenedor do repositório, você não precisa fazer configuração ini
 
 <!-- -->
 
-3.  Adicione alterações específicas ao stage:
+3.  Adicione alterações ao stage:
 
     -   Específico:
 
@@ -608,7 +611,7 @@ Enquanto mantenedor do repositório, você não precisa fazer configuração ini
 
 <!-- -->
 
-3.  Envie sua branch atualizada para seu repo.
+3.  Envie sua branch atualizada para seu repositório `origin`.
 
     ```{bash, echo = TRUE, eval = FALSE}
     git push origin nome-branch
@@ -626,9 +629,9 @@ Após enviar suas alterações para seu repositório, você precisa criar um Pul
 
 2.  Após criar o PR:
 
-    -   Responda a comentários de outros mantenedores do projeto, se houver.
+    -   Como as modificações foram feitas por você mesmo, voê já pode mesclar e finalizar as alterações.
 
-    -   Se precisar fazer ajustes, faça as alterações (sem precisar criar nova branch) e os novos commits serão automaticamente incluídos no PR:
+    -   Se precisar responder a comentários de outros mantenedores do projeto e, neste caso, necessitar fazer ajustes, faça as alterações (sem precisar criar nova branch) e os novos commits serão automaticamente incluídos no PR:
 
         ```{bash, echo = TRUE, eval = FALSE}
         git add .
@@ -742,7 +745,7 @@ Antes de iniciar o trabalho, garanta que a branch `main` do seu repositório loc
         git merge main
         ```
 
-    -   Reabse:
+    -   Rebase:
 
         ```{bash, echo = TRUE, eval = FALSE}
         git checkout nome-branch
@@ -842,7 +845,7 @@ Nesta etapa, faça as alterações necessárias no projeto, como modificar arqui
 
 3.  Após criar o PR:
 
-    O proprietário clica na mensagem da commit para ver o que foi alterado no projeto. Surge os arquivos modificados, destanco as linhas mudadas. O **proprietário** pode tomar três decisões:
+    O proprietário **clica na mensagem da commit** para ver o que foi alterado no projeto. Surge os arquivos modificados, destacando as linhas mudadas. O **proprietário** pode tomar três decisões:
 
     -   **Aprovar a `Pull Request`.** Basta clicar em **`Review changes`** e depois marca a oção **`Approve`** e então clica em **`Submit review`** para encerrar a revisão. Surgirá a janela de mesclar (Merge) a alteração com a main original. Clique em **`Merge Pull Request`** e depois em **`Confirme merge`** .
 
@@ -875,7 +878,7 @@ Nesta etapa, faça as alterações necessárias no projeto, como modificar arqui
 
     | Por fim, o proprietário do repositório verifica as correções clicando na nova commit desse Pull Request no Github; então, confere as mudanças e depois termina a revisão cliclando em **`Review changes`**, adicionando um comentário na janela que se abre, indicando se as modificações foram bem sucedidas. Depois, seleciona a opção **Approve** e clica em **`Submit Review`** para concluir. A janela do Pull Request se abrirá novamente, permitindo que o proprietário finalize o processo de mesclagem clicando em **`Merge Pull Request` e `Confirme merge`**.
 
-### 4.2.7 Após Aprovação do PR
+### 4.2.7 Atualização da main `local` e `origin` após aprovação do PR
 
 Depois que seu Pull Request (PR) for **revisado e aprovado pelos mantenedores do projeto**, é importante realizar algumas etapas de limpeza e organização no seu repositório local e remoto. Isso mantém seu ambiente de trabalho organizado e sincronizado com o projeto principal. Siga os comandos abaixo para atualizar suas branches e remover as que não são mais necessárias:
 
