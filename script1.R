@@ -5,5 +5,7 @@ y <- x^2
 df <- tibble(x, y)
 df
 
-df |> ggplot(aes(x, y)) + geom_point() +
+df |> ggplot(aes(x, y)) + 
+  geom_point(col = "blue", size = 2) +
   geom_line()
+
